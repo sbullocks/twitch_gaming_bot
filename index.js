@@ -1,14 +1,21 @@
 require('dotenv').config();
+// console.log(`username: ${process.env.USERNAME}`);
+// console.log(`password: ${process.env.OAUTH_TOKEN}`);
 const { isBadWord } = require('./badWords');
 const tmi = require('tmi.js');
+const onMessageHandler = require('./onMessageHandler');
+// const onConnectedHandler = require('./onConnectedHandler');
+const words = ['!hello', 'hello', 'greetings', 'hi', 'howdy', 'welcome', 'bonjour', 'buenas noches', 'buenos dias', 'good day', 'good morning', 'hey', 'hi-ya', 'how are you', 'how goes it', 'howdy-do', 'shalom', 'yo', 'yoo', 'yooo'];
+
 
 // Set up options for the tmi.js client
 const opts = {
     options: { debug: true },
     identity: {
-        USERNAME: process.env.USERNAME,
+        username: 'process.env.USERNAME',
+        // username: process.env.USERNAME,
         // USERNAME: process.env.USERNAME + Math.floor(Math.random()*100000),
-        PASSWORD: process.env.OAUTH_TOKEN
+        password: process.env.OAUTH_TOKEN
     },
     channels: [ 'paid4hire' ]
 };
@@ -24,22 +31,28 @@ client.on('connected', (addr, port) => {
 client.on('message', (channel, userstate, message, self) => {
     // Ignore messages from the bot
     if (self) return;
+    // console.log(`Value of userstate: ${JSON.stringify(userstate)}`);
+    onMessageHandler(client, channel, userstate, userstate.username, self);
 
     // Check if message contains any bad words
     if (isBadWord(message)) {
         // take appropriate action
         // block the message or timeout the user 
         if(userstate.username) {
-            client.say(channel, `@${userstate.username}, please do not use bad language`)
+            client.say(channel, `@${userstate.username}, please do not use that language is this chat environment!`)
                 .catch(error => console.log(error));
         }
     }
 
     // Check for the !hello command
-    if(message.toLowerCase() === '!hello') {
-        client.say(channel, `@${userstate.username}, heya!`).catch(error=> console.log(error));
-    }
-});
+//     if(message.toLowerCase() === '!hello' || message.toLowerCase() === 'hey') {
+//         client.say(channel, `@${userstate.username}, whats up!`).catch(error=> console.log(error));
+//     }
+// });
+
+if(words.includes(message.toLowerCase())) {
+    client.say(channel, `@${userstate.username}, whats up!`).catch(error=> console.log(error));
+}});
 
 client.on('disconnected', (reason) => {
     console.log('Disconnected due to: '+ reason);
@@ -53,3 +66,6 @@ client.connect()
 .catch(err => {
     console.error(`Error: ${err}`);
 });
+
+// client.on('connected', onConnectedHandler);
+client.on('message', onMessageHandler);
