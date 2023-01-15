@@ -34,25 +34,27 @@ client.on('message', (channel, userstate, message, self) => {
     // console.log(`Value of userstate: ${JSON.stringify(userstate)}`);
     onMessageHandler(client, channel, userstate, userstate.username, self);
 
+    // Check for the !time command
+    if(message.toLowerCase() === '!time') {
+        const currentTime = new Date().toLocaleTimeString('en-US', {timeZone: 'EST'});
+        client.say(channel, `@${userstate.username}, the current time is: ${currentTime} EST`)
+            .catch(error => console.log(error));
+    }
+
     // Check if message contains any bad words
     if (isBadWord(message)) {
         // take appropriate action
         // block the message or timeout the user 
         if(userstate.username) {
-            client.say(channel, `@${userstate.username}, please do not use that language is this chat environment!`)
+            client.say(channel, `@${userstate.username}, dont be a bitch, please do not use that language is this chat environment!`)
                 .catch(error => console.log(error));
         }
     }
 
-    // Check for the !hello command
-//     if(message.toLowerCase() === '!hello' || message.toLowerCase() === 'hey') {
-//         client.say(channel, `@${userstate.username}, whats up!`).catch(error=> console.log(error));
-//     }
-// });
-
-if(words.includes(message.toLowerCase())) {
-    client.say(channel, `@${userstate.username}, whats up!`).catch(error=> console.log(error));
-}});
+    if(words.includes(message.toLowerCase())) {
+        client.say(channel, `@${userstate.username}, whats up!`).catch(error=> console.log(error));
+    }
+});
 
 client.on('disconnected', (reason) => {
     console.log('Disconnected due to: '+ reason);
