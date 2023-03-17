@@ -43,12 +43,16 @@ Before using the bot, you will need to configure it with your Twitch credentials
     TWITCH_CHANNEL='your-twitch-channel-username'
 
 TWITCH_USERNAME: ystwitchbot is the username created for the bot.
+
 TWITCH_PASSWORD: Your Twitch OAuth token. You can generate one here.
+
 TWITCH_CHANNEL: Your Twitch Channel username.
 
 ## Screenshot
 
   ![Terminal successfully connecting to the server.](./Screenshot%202023-03-16%20214832.png)
+  ![Twitch chat showing bot interacting with live chatters.](./Screenshot%202023-03-16%20225106.png)
+  ![Capture of terminal chat history.](./Screenshot%202023-03-16%20225158.png)
 
 ## Usage
 
@@ -64,4 +68,4 @@ If you would like to contribute to the project, you can create a pull request wi
 
 ## GitHub
 
-Click to access my page: [Sbullocks](https://github.com/sbullocks).
+Click to access my page: [sbullocks](https://github.com/sbullocks).
