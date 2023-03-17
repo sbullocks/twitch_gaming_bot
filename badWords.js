@@ -1,4 +1,4 @@
-const badWords = ['ass', 'shit', 'fuck'];
+const badWords = ['ass', 'shit', 'fuck', 'bitch', 'asshole', 'bastard', 'stupid', 'dumb'];
 
 // module.exports = function isBadWord(message) {
 //     // convert message to lowercase for case-insensitive check
