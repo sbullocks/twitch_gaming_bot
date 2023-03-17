@@ -1,4 +1,5 @@
-# Twitch Chat Bot ![License Badge](https://img.shields.io/badge/license-MIT-green)
+# Twitch Chat Bot ![License Badge](https://img.shields.io/badge/license-MIT-green) ![Node.js Badge](https://img.shields.io/badge/technology-Node.js-green) ![JavaScript Badge](https://img.shields.io/badge/technology-JavaScript-green)
+
 
 ## Description
 
@@ -28,22 +29,18 @@ This is a chat bot for Twitch that can perform various functions such as moderat
 
 To use the bot, you will need to have Node.js installed on your machine. Once you have installed Node.js, you can clone this repository to your local machine and install the required dependencies by running the following commands in your terminal:
 
-* git clone https://github.com/sbullocks/twitch_gaming_bot
-
-* cd twitch_gaming_bot
-
-* npm install
+    git clone https://github.com/sbullocks/twitch_gaming_bot
+    cd twitch_gaming_bot
+    npm install
 
 ## Configuration
 
 Before using the bot, you will need to configure it with your Twitch credentials and other settings. You can do this by creating a .env file in the root directory of the project with the following format:
 
 
-* TWITCH_USERNAME='ystwitchbot'
-
-* TWITCH_PASSWORD='your-twitch-oauth-token'
-
-* TWITCH_CHANNEL='your-twitch-channel-username'
+    TWITCH_USERNAME='ystwitchbot'
+    TWITCH_PASSWORD='your-twitch-oauth-token'
+    TWITCH_CHANNEL='your-twitch-channel-username'
 
 TWITCH_USERNAME: ystwitchbot is the username created for the bot.
 TWITCH_PASSWORD: Your Twitch OAuth token. You can generate one here.
@@ -57,7 +54,7 @@ TWITCH_CHANNEL: Your Twitch Channel username.
 
 To start the bot, run the following command in your terminal:
   
-* node index.js
+    node index.js
 
 The bot will connect to your Twitch chat and start listening for commands and messages.
 
